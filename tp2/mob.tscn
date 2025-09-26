@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccve6i6jlwrlb"]
+
+[ext_resource type="Texture2D" uid="uid://c5o464lh200ja" path="res://img/character/Enemies/bee compressed.png" id="1_b3mxk"]
+[ext_resource type="Texture2D" uid="uid://dq1p8y04t14ww" path="res://img/character/Enemies/wingMan1.png" id="2_1qmh0"]
+[ext_resource type="Texture2D" uid="uid://jcvikc241btk" path="res://img/character/Enemies/wingMan2.png" id="3_gfurk"]
+[ext_resource type="Texture2D" uid="uid://fbmdei2xtcds" path="res://img/character/Enemies/wingMan3.png" id="4_ieysi"]
+[ext_resource type="Texture2D" uid="uid://de7v3qyhwao0" path="res://img/character/Enemies/wingMan4.png" id="5_cixyi"]
+[ext_resource type="Texture2D" uid="uid://dsig31uvajffk" path="res://img/character/Enemies/wingMan5.png" id="6_7ulmv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcqmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b3mxk")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1qmh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gfurk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ieysi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cixyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7ulmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cixyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ieysi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gfurk")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Mob" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(175.206, 498.876)
+scale = Vector2(0.512442, 0.512442)
+sprite_frames = SubResource("SpriteFrames_pcqmr")
+animation = &"dead"

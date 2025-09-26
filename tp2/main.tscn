@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://jg1n3a5w1185"]
+
+[ext_resource type="Script" uid="uid://bvuhmtyvshi00" path="res://camera_2d.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dx7indmqfudrf" path="res://img/World/Background/bg_layer1.png" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(242, 361)
+script = ExtResource("1_ig7tw")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(225.5, 393)
+scale = Vector2(0.302246, 0.400391)
+texture = ExtResource("2_0xm2m")

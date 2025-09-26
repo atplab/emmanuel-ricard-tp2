@@ -1,0 +1,163 @@
+[gd_scene load_steps=15 format=3 uid="uid://cgjqlkugnakod"]
+
+[ext_resource type="Script" uid="uid://dpecla14mlgmw" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://c2b34lgl5158x" path="res://img/character/cube_character/PNG/blue_body_squircle.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://vr36f8w8lsvc" path="res://img/character/cube_character/PNG/facial_part_eye_half_top.png" id="3_hqtel"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
+radius = 40.0
+height = 80.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i3pqv")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hqtel")
+}],
+"loop": true,
+"name": &"standby",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hqtel")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jxqw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b26j0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7ghd"]
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-14, 18), Vector2(-14, 4.415), Vector2(-14, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(25, 12), Vector2(25, 10), Vector2(25, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hs0m"]
+_data = {
+&"RESET": SubResource("Animation_hqtel"),
+&"idle": SubResource("Animation_i3pqv"),
+&"walk": SubResource("Animation_sweqy")
+}
+
+[node name="player" type="Area2D"]
+position = Vector2(1, 6)
+script = ExtResource("1_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 18)
+shape = SubResource("CapsuleShape2D_sweqy")
+
+[node name="Cube" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 18)
+sprite_frames = SubResource("SpriteFrames_sh265")
+animation = &"new_animation"
+
+[node name="LeftEye" type="AnimatedSprite2D" parent="Cube"]
+position = Vector2(-15, -10)
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"standby"
+
+[node name="RightEye" type="AnimatedSprite2D" parent="Cube"]
+sprite_frames = SubResource("SpriteFrames_1jxqw")
+
+[node name="Mouth" type="AnimatedSprite2D" parent="Cube"]
+sprite_frames = SubResource("SpriteFrames_dw050")
+
+[node name="SourcilGauche" type="AnimatedSprite2D" parent="Cube"]
+sprite_frames = SubResource("SpriteFrames_b26j0")
+
+[node name="SourcilDroit" type="AnimatedSprite2D" parent="Cube"]
+sprite_frames = SubResource("SpriteFrames_n7ghd")
+
+[node name="Cube2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 18)
+sprite_frames = SubResource("SpriteFrames_sh265")
+animation = &"new_animation"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cube2"]
+libraries = {
+&"": SubResource("AnimationLibrary_2hs0m")
+}
+
+[node name="LeftEye" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"walk"
+
+[node name="RightEye" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+position = Vector2(2, 24)
+sprite_frames = SubResource("SpriteFrames_1jxqw")
+
+[node name="Mouth" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+position = Vector2(2, 24)
+sprite_frames = SubResource("SpriteFrames_dw050")
+
+[node name="SourcilGauche" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+position = Vector2(2, 24)
+sprite_frames = SubResource("SpriteFrames_b26j0")
+
+[node name="SourcilDroit" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+position = Vector2(2, 24)
+sprite_frames = SubResource("SpriteFrames_n7ghd")
