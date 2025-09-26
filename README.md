@@ -8,8 +8,6 @@
 <br />
 <br />
 visuel pour le terrain : https://kenney.nl/assets/simplified-platformer-pack
-<br /> 
-ennemis : https://kenney.nl/assets/animal-pack-redux
 <br />
 niveau industriel : https://kenney.nl/assets/platformer-pack-industrial
 <br />
