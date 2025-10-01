@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgjqlkugnakod"]
+[gd_scene load_steps=20 format=3 uid="uid://cgjqlkugnakod"]
 
 [ext_resource type="Script" uid="uid://dpecla14mlgmw" path="res://player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c2b34lgl5158x" path="res://img/character/cube_character/PNG/blue_body_squircle.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://vr36f8w8lsvc" path="res://img/character/cube_character/PNG/facial_part_eye_half_top.png" id="3_hqtel"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
-radius = 40.0
-height = 80.0
+[ext_resource type="Texture2D" uid="uid://pdmig8tsomo" path="res://img/character/Characters/platformChar_idle.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://tjiee51e2kee" path="res://img/character/Characters/platformChar_jump.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://bcylcb0tkv6nq" path="res://img/character/Characters/platformChar_walk1.png" id="6_b26j0"]
+[ext_resource type="Texture2D" uid="uid://cjf8v7js3wveq" path="res://img/character/Characters/platformChar_walk2.png" id="7_n7ghd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
 animations = [{
@@ -46,6 +46,21 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n7ghd"]
 
+[sub_resource type="Animation" id="Animation_hqtel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_i3pqv"]
 resource_name = "idle"
 loop_mode = 1
@@ -60,21 +75,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-14, 18), Vector2(-14, 4.415), Vector2(-14, 18)]
-}
-
-[sub_resource type="Animation" id="Animation_hqtel"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/LeftEye:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sweqy"]
@@ -101,13 +101,42 @@ _data = {
 &"walk": SubResource("Animation_sweqy")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl01"]
+size = Vector2(53, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivps1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n7ghd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="player" type="Area2D"]
 position = Vector2(1, 6)
 script = ExtResource("1_i3pqv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 18)
-shape = SubResource("CapsuleShape2D_sweqy")
 
 [node name="Cube" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -116,23 +145,29 @@ sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"new_animation"
 
 [node name="LeftEye" type="AnimatedSprite2D" parent="Cube"]
+visible = false
 position = Vector2(-15, -10)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"standby"
 
 [node name="RightEye" type="AnimatedSprite2D" parent="Cube"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_1jxqw")
 
 [node name="Mouth" type="AnimatedSprite2D" parent="Cube"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_dw050")
 
 [node name="SourcilGauche" type="AnimatedSprite2D" parent="Cube"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_b26j0")
 
 [node name="SourcilDroit" type="AnimatedSprite2D" parent="Cube"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_n7ghd")
 
 [node name="Cube2" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(1, 18)
 sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"new_animation"
@@ -143,21 +178,35 @@ libraries = {
 }
 
 [node name="LeftEye" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"walk"
 
 [node name="RightEye" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+visible = false
 position = Vector2(2, 24)
 sprite_frames = SubResource("SpriteFrames_1jxqw")
 
 [node name="Mouth" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+visible = false
 position = Vector2(2, 24)
 sprite_frames = SubResource("SpriteFrames_dw050")
 
 [node name="SourcilGauche" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+visible = false
 position = Vector2(2, 24)
 sprite_frames = SubResource("SpriteFrames_b26j0")
 
 [node name="SourcilDroit" type="AnimatedSprite2D" parent="Cube2/AnimationPlayer"]
+visible = false
 position = Vector2(2, 24)
 sprite_frames = SubResource("SpriteFrames_n7ghd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 13.5)
+shape = SubResource("RectangleShape2D_nvl01")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+position = Vector2(-0.5, -13.5)
+sprite_frames = SubResource("SpriteFrames_ivps1")
+animation = &"walk"

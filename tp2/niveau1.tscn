@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ro10u7is8fx"]
+
+[ext_resource type="Texture2D" uid="uid://jogb3wma488a" path="res://img/World/Environment/ground_cake.png" id="1_midqc"]
+[ext_resource type="PackedScene" uid="uid://cukrc4kssf6gj" path="res://character.tscn" id="2_rbhar"]
+[ext_resource type="Texture2D" uid="uid://db18uge231iah" path="res://img/World/Environment/ground_cake_small.png" id="2_w8phw"]
+[ext_resource type="Texture2D" uid="uid://dqq6kgnagjs03" path="res://img/World/Environment/ground_sand.png" id="3_w8phw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8phw"]
+size = Vector2(60, 14)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Ground1" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="Ground1/CollisionShape2D"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground2" type="StaticBody2D" parent="Ground1"]
+position = Vector2(95, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground2"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="Ground1/Ground2/CollisionShape2D"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground3" type="StaticBody2D" parent="Ground1"]
+position = Vector2(237, -66)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground3"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="Ground1/Ground3/CollisionShape2D"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground1" type="StaticBody2D" parent="Ground1"]
+position = Vector2(116, -116)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="Ground1/Ground1"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="Ground1/Ground1/CollisionShape2D1"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground4" type="StaticBody2D" parent="Ground1"]
+position = Vector2(232, -239)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground1/Ground4"]
+position = Vector2(91, 695)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="Ground1/Ground4/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_w8phw")
+
+[node name="Ground5" type="StaticBody2D" parent="Ground1"]
+position = Vector2(-29, -211)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground5"]
+position = Vector2(74, 697)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundSand" type="Sprite2D" parent="Ground1/Ground5/CollisionShape2D"]
+position = Vector2(0.484055, 0.625)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+
+[node name="Ground6" type="StaticBody2D" parent="Ground1"]
+position = Vector2(79, -293)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground6"]
+position = Vector2(74, 697)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundSand" type="Sprite2D" parent="Ground1/Ground6/CollisionShape2D"]
+position = Vector2(0.484055, 0.625)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+
+[node name="Ground7" type="StaticBody2D" parent="Ground1"]
+position = Vector2(-26, -370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground7"]
+position = Vector2(74, 697)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundSand" type="Sprite2D" parent="Ground1/Ground7/CollisionShape2D"]
+position = Vector2(0.484055, 0.625)
+scale = Vector2(0.156915, 0.156915)
+texture = ExtResource("3_w8phw")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_rbhar")]
+position = Vector2(38, 603)
+scale = Vector2(0.869772, 0.869772)
