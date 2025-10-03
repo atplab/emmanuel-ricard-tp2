@@ -1,105 +1,262 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ro10u7is8fx"]
+[gd_scene load_steps=11 format=3 uid="uid://b1ro10u7is8fx"]
 
+[ext_resource type="Texture2D" uid="uid://cn6wl1t5fdtx6" path="res://img/World/Environment/mushroom_red.png" id="1_cte38"]
 [ext_resource type="Texture2D" uid="uid://jogb3wma488a" path="res://img/World/Environment/ground_cake.png" id="1_midqc"]
-[ext_resource type="PackedScene" uid="uid://cukrc4kssf6gj" path="res://character.tscn" id="2_rbhar"]
+[ext_resource type="Texture2D" uid="uid://bj5088kraew2a" path="res://img/World/Environment/mushroom_brown.png" id="2_tba4h"]
 [ext_resource type="Texture2D" uid="uid://db18uge231iah" path="res://img/World/Environment/ground_cake_small.png" id="2_w8phw"]
 [ext_resource type="Texture2D" uid="uid://dqq6kgnagjs03" path="res://img/World/Environment/ground_sand.png" id="3_w8phw"]
+[ext_resource type="PackedScene" uid="uid://cgjqlkugnakod" path="res://player.tscn" id="4_w8phw"]
+[ext_resource type="Texture2D" uid="uid://cq0y7nux4ao04" path="res://img/World/Environment/grass_brown2.png" id="5_h3rij"]
+[ext_resource type="Texture2D" uid="uid://sswwfojcxdxg" path="res://img/World/Environment/grass_brown1.png" id="6_qirib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neqgn"]
+size = Vector2(27, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8phw"]
 size = Vector2(60, 14)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Ground1" type="StaticBody2D" parent="."]
+[node name="pl_cake" type="StaticBody2D" parent="."]
+position = Vector2(-28, -339)
+scale = Vector2(1.64, 1.64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
-position = Vector2(48, 646)
-shape = SubResource("RectangleShape2D_w8phw")
+[node name="decos" type="Sprite2D" parent="pl_cake"]
+position = Vector2(159.146, 620.732)
+scale = Vector2(0.176905, 0.176905)
+texture = ExtResource("1_cte38")
 
-[node name="GroundCake" type="Sprite2D" parent="Ground1/CollisionShape2D"]
-scale = Vector2(0.159575, 0.159575)
-texture = ExtResource("1_midqc")
+[node name="MushroomBrown" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(-691.516, 70.6328)
+scale = Vector2(0.797873, 0.797873)
+texture = ExtResource("2_tba4h")
 
-[node name="Ground2" type="StaticBody2D" parent="Ground1"]
-position = Vector2(95, -13)
+[node name="MushroomBrown2" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(34.4682, -579.064)
+scale = Vector2(0.689378, 0.689378)
+texture = ExtResource("2_tba4h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground2"]
-position = Vector2(48, 646)
-shape = SubResource("RectangleShape2D_w8phw")
+[node name="MushroomRed" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(696.255, -296.426)
+scale = Vector2(0.724272, 0.724272)
+texture = ExtResource("1_cte38")
 
-[node name="GroundCake" type="Sprite2D" parent="Ground1/Ground2/CollisionShape2D"]
-scale = Vector2(0.159575, 0.159575)
-texture = ExtResource("1_midqc")
+[node name="MushroomRed2" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(-692.808, -834.128)
+scale = Vector2(0.827234, 0.827234)
+texture = ExtResource("1_cte38")
 
-[node name="Ground3" type="StaticBody2D" parent="Ground1"]
-position = Vector2(237, -66)
+[node name="MushroomBrown4" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(-699.702, -1399.4)
+scale = Vector2(0.475242, 0.475242)
+texture = ExtResource("2_tba4h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground3"]
-position = Vector2(48, 646)
-shape = SubResource("RectangleShape2D_w8phw")
+[node name="MushroomRed3" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(-548.042, -1413.19)
+scale = Vector2(1.13789, 1.13789)
+texture = ExtResource("1_cte38")
 
-[node name="GroundCake" type="Sprite2D" parent="Ground1/Ground3/CollisionShape2D"]
-scale = Vector2(0.159575, 0.159575)
-texture = ExtResource("1_midqc")
+[node name="MushroomBrown3" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(-255.064, -1409.74)
+scale = Vector2(0.751004, 0.751004)
+texture = ExtResource("2_tba4h")
 
-[node name="Ground1" type="StaticBody2D" parent="Ground1"]
-position = Vector2(116, -116)
+[node name="MushroomRed4" type="Sprite2D" parent="pl_cake/decos"]
+position = Vector2(-523.915, -1392.51)
+scale = Vector2(0.279368, 0.279368)
+texture = ExtResource("1_cte38")
 
-[node name="CollisionShape2D1" type="CollisionShape2D" parent="Ground1/Ground1"]
-position = Vector2(48, 646)
-shape = SubResource("RectangleShape2D_w8phw")
+[node name="Ground8" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(-118.902, -266.463)
 
-[node name="GroundCake" type="Sprite2D" parent="Ground1/Ground1/CollisionShape2D1"]
-scale = Vector2(0.159575, 0.159575)
-texture = ExtResource("1_midqc")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_cake/Ground8"]
+position = Vector2(74.5, 695)
+shape = SubResource("RectangleShape2D_neqgn")
 
-[node name="Ground4" type="StaticBody2D" parent="Ground1"]
-position = Vector2(232, -239)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground1/Ground4"]
-position = Vector2(91, 695)
-shape = SubResource("RectangleShape2D_w8phw")
-
-[node name="GroundCakeSmall" type="Sprite2D" parent="Ground1/Ground4/CollisionShape2D4"]
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_cake/Ground8/CollisionShape2D4"]
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("2_w8phw")
 
-[node name="Ground5" type="StaticBody2D" parent="Ground1"]
-position = Vector2(-29, -211)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_cake"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground5"]
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/CollisionShape2D"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground2" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(95, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_cake/Ground2"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground2/CollisionShape2D"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground3" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(237, -66)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_cake/Ground3"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground3/CollisionShape2D"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground1" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(116, -116)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="pl_cake/Ground1"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground1/CollisionShape2D1"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground1" type="StaticBody2D" parent="pl_cake/Ground1"]
+position = Vector2(-146.488, -44.9756)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="pl_cake/Ground1/Ground1"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground1/Ground1/CollisionShape2D1"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground4" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(232, -239)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_cake/Ground4"]
+position = Vector2(74.5, 695)
+shape = SubResource("RectangleShape2D_neqgn")
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_cake/Ground4/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_w8phw")
+
+[node name="Ground5" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(351.829, -316.463)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_cake/Ground5"]
+position = Vector2(74.5, 695)
+shape = SubResource("RectangleShape2D_neqgn")
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_cake/Ground5/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_w8phw")
+
+[node name="Ground7" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(44.5122, -262.195)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="pl_cake/Ground7"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground7/CollisionShape2D1"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+flip_h = true
+
+[node name="Ground6" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(-15.8537, -262.195)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="pl_cake/Ground6"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground6/CollisionShape2D1"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+
+[node name="Ground9" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(484.146, -385.976)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_cake/Ground9"]
+position = Vector2(74.5, 695)
+shape = SubResource("RectangleShape2D_neqgn")
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_cake/Ground9/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_w8phw")
+
+[node name="Ground10" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(550, -456.098)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pl_cake/Ground10"]
+position = Vector2(74.5, 695)
+shape = SubResource("RectangleShape2D_neqgn")
+
+[node name="GroundCakeSmall" type="Sprite2D" parent="pl_cake/Ground10/CollisionShape2D4"]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_w8phw")
+
+[node name="Ground11" type="StaticBody2D" parent="pl_cake"]
+position = Vector2(-128.049, -295.732)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="pl_cake/Ground11"]
+position = Vector2(48, 646)
+shape = SubResource("RectangleShape2D_w8phw")
+
+[node name="GroundCake" type="Sprite2D" parent="pl_cake/Ground11/CollisionShape2D1"]
+scale = Vector2(0.159575, 0.159575)
+texture = ExtResource("1_midqc")
+flip_h = true
+
+[node name="pl_sand" type="StaticBody2D" parent="."]
+position = Vector2(761, -1209)
+scale = Vector2(1.64, 1.64)
+
+[node name="decos" type="Sprite2D" parent="pl_sand"]
+position = Vector2(90.8536, 685.976)
+scale = Vector2(0.221254, 0.221254)
+texture = ExtResource("5_h3rij")
+
+[node name="GrassBrown1" type="Sprite2D" parent="pl_sand/decos"]
+position = Vector2(-628.346, -322.441)
+scale = Vector2(1.6313, 1.6313)
+texture = ExtResource("6_qirib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand"]
 position = Vector2(74, 697)
 shape = SubResource("RectangleShape2D_w8phw")
 
-[node name="GroundSand" type="Sprite2D" parent="Ground1/Ground5/CollisionShape2D"]
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/CollisionShape2D"]
 position = Vector2(0.484055, 0.625)
 scale = Vector2(0.156915, 0.156915)
 texture = ExtResource("3_w8phw")
 
-[node name="Ground6" type="StaticBody2D" parent="Ground1"]
-position = Vector2(79, -293)
+[node name="Ground7" type="StaticBody2D" parent="pl_sand"]
+position = Vector2(-104.878, -68.9025)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pl_sand/Ground7"]
 position = Vector2(74, 697)
 shape = SubResource("RectangleShape2D_w8phw")
 
-[node name="GroundSand" type="Sprite2D" parent="Ground1/Ground6/CollisionShape2D"]
+[node name="GroundSand" type="Sprite2D" parent="pl_sand/Ground7/CollisionShape2D"]
 position = Vector2(0.484055, 0.625)
 scale = Vector2(0.156915, 0.156915)
 texture = ExtResource("3_w8phw")
 
-[node name="Ground7" type="StaticBody2D" parent="Ground1"]
-position = Vector2(-26, -370)
+[node name="player" parent="." instance=ExtResource("4_w8phw")]
+position = Vector2(48, 669)
+scale = Vector2(0.513591, 0.513591)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/Ground7"]
-position = Vector2(74, 697)
-shape = SubResource("RectangleShape2D_w8phw")
+[node name="Camera2D" type="Camera2D" parent="player"]
+scale = Vector2(0.997946, 1.04359)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_right = 1000
+limit_bottom = 720
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 
-[node name="GroundSand" type="Sprite2D" parent="Ground1/Ground7/CollisionShape2D"]
-position = Vector2(0.484055, 0.625)
-scale = Vector2(0.156915, 0.156915)
-texture = ExtResource("3_w8phw")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_rbhar")]
-position = Vector2(38, 603)
-scale = Vector2(0.869772, 0.869772)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.14
+blend_mode = 1

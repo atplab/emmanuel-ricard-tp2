@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 270.0
+const JUMP_VELOCITY = -500.0
 
 enum Etat {
 	REPOS,
@@ -24,15 +24,15 @@ func _physics_process(delta: float) -> void:
 		etat_courant = Etat.MARCHE
 	 
 	if etat_courant == Etat.SAUT:
-		$CollisionShape2D/joueur.play("Saut")
+		$joueur.play("jump")
 		# ajouter la graviter quand je saute
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if etat_courant == Etat.REPOS:
-		$CollisionShape2D/joueur.play("Idle")
+		$joueur.play("idle")
 		#transition marche - saut
 	if etat_courant == Etat.MARCHE:
-		$CollisionShape2D/joueur.play("marche")
+		$joueur.play("walk")
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept"):
 		velocity.y = JUMP_VELOCITY
@@ -46,9 +46,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if velocity.x > 0:
-		$CollisionShape2D/joueur.flip_h = false
-	if velocity.x > 0:
-		$CollisionShape2D/joueur.flip_h = true
+		$joueur.flip_h = false
+	if velocity.x < 0:
+		$joueur.flip_h = true
 
 
 	move_and_slide()

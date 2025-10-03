@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cgjqlkugnakod"]
 
-[ext_resource type="Script" uid="uid://dpecla14mlgmw" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://b4hfyinrhvlkd" path="res://character.gd" id="1_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://c2b34lgl5158x" path="res://img/character/cube_character/PNG/blue_body_squircle.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://vr36f8w8lsvc" path="res://img/character/cube_character/PNG/facial_part_eye_half_top.png" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://pdmig8tsomo" path="res://img/character/Characters/platformChar_idle.png" id="4_1jxqw"]
@@ -101,9 +101,6 @@ _data = {
 &"walk": SubResource("Animation_sweqy")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl01"]
-size = Vector2(53, 67)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivps1"]
 animations = [{
 "frames": [{
@@ -111,7 +108,7 @@ animations = [{
 "texture": ExtResource("4_1jxqw")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -134,9 +131,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="Area2D"]
-position = Vector2(1, 6)
-script = ExtResource("1_i3pqv")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl01"]
+size = Vector2(53, 67)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_1jxqw")
 
 [node name="Cube" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -202,11 +201,10 @@ visible = false
 position = Vector2(2, 24)
 sprite_frames = SubResource("SpriteFrames_n7ghd")
 
+[node name="joueur" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ivps1")
+animation = &"idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 13.5)
 shape = SubResource("RectangleShape2D_nvl01")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
-position = Vector2(-0.5, -13.5)
-sprite_frames = SubResource("SpriteFrames_ivps1")
-animation = &"walk"

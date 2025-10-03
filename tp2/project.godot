@@ -17,9 +17,13 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=720
+window/size/viewport_width=720
+window/size/viewport_height=480
 window/stretch/mode="canvas_items"
+
+[physics]
+
+2d/default_gravity=1015.89
 
 [rendering]
 
